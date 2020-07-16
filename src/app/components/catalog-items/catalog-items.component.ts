@@ -11,12 +11,16 @@ export class CatalogItemsComponent implements OnInit {
   @Input() items: Array<Catalog> = [];
   @Input() currentIndex: number;
   @Output() selectedCatalog: EventEmitter<number> = new EventEmitter<number>();
-  constructor() { }
+  constructor() {
+    this.currentIndex = 0;
+  }
 
   ngOnInit() {
   }
 
-  onImageSelect() {
+  onImageSelect(catalog: any, i: number) {
+    this.currentIndex = i;
+    this.selectedCatalog.emit(i);
   }
 
 }
